@@ -1,4 +1,4 @@
-from utility import random_initialize
+from utility import random_initialize, get_average_delta_WandB
 from forward_propagate import forward_propagation
 from backward_propagate import backward_propagation
 
@@ -28,5 +28,34 @@ def gradient_descent(X, Y, learning_rate, number_of_layers, number_of_batch, bat
 
 
 def gradient_descent_mini_batch(X, Y, learning_rate, number_of_layers, number_of_batchs, batch_size, size_of_hidden_layer, Weights, Biases):
-    pass
+    itr = 0
+    delta_W_acc = []
+    delta_B_acc = []
+
+    while iitr<X.shape[0]:
+        H, A, y_pred = forward_propagation(X[itr], Weights, Biases, number_of_layers)
+
+        delta_Weights, delta_Biases = backward_propagation(H, A, Weights, Y[itr], y_pred, number_of_layers)
+
+        delta_W_acc.append(delta_Weights)
+        delta_B_acc.append(delta_Biases)
+
+        itr = itr + 1
+        if itr%batch_size==0:
+            delta_W_avg, delta_B_avg = get_average_delta_WandB(delta_W_acc, delta_B_acc)
+
+            Weights, Biases = update_weights_and_biases(learning_rate, Weights, Biases, delta_W_avg, delta_B_avg)
+
+            delta_W_acc = []
+            delta_B_acc = []
+            delta_W_avg = 0
+            delta_B_avg = 0
+
+
+    if delta_B_acc and delta_W_acc:
+        delta_W_avg, delta_B_avg = get_average_delta_WandB(delta_W_acc, delta_B_acc)
+
+        Weights, Biases = update_weights_and_biases(learning_rate, Weights, Biases, delta_W_avg, delta_B_avg)
+
+    return Weights, Biases
 
