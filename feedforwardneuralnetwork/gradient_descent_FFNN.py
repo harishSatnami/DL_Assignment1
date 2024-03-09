@@ -14,9 +14,19 @@ def update_weights_and_biases(learning_rate, Weights, Biases, delta_Weights, del
 def gradient_descent(X, Y, learning_rate, number_of_layers, number_of_batch, batch_size, nodes_per_hidden_layer, nodes_in_output_layer, Weights, Biases):
     # Weights, Biases = random_initialize(number_of_layers,nodes_per_hidden_layer,nodes_in_output_layer)
     itr = 0
+    # if X is None:
+    #     return None, None
     while itr<number_of_batch:
-        H, A, y_pred = forward_propagation(X[itr*batch_size:(itr+1)*batch_size], Weights, Biases, number_of_layers)
-        delta_Weights, delta_Biases = backward_propagation(H, A, Weights, Y[itr*batch_size:(itr+1)*batch_size], y_pred, number_of_layers)
+        # H, A, y_pred = forward_propagation(X[itr*batch_size:(itr+1)*batch_size], Weights, Biases, number_of_layers)
+        H, A, y_pred = forward_propagation(X[itr], Weights, Biases, number_of_layers)
+        # return None, None
+        # delta_Weights, delta_Biases = backward_propagation(H, A, Weights, Y[itr*batch_size:(itr+1)*batch_size], y_pred, number_of_layers)
+        delta_Weights, delta_Biases = backward_propagation(H, A, Weights, Y[itr], y_pred, number_of_layers)        
         Weights , Biases = update_weights_and_biases(learning_rate, Weights, Biases, delta_Weights, delta_Biases)
-    
+        itr = itr + 1
     return Weights, Biases
+
+
+def gradient_descent_mini_batch(X, Y, learning_rate, number_of_layers, number_of_batchs, batch_size, size_of_hidden_layer, Weights, Biases):
+    pass
+

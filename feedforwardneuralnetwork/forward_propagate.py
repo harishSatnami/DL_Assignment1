@@ -5,10 +5,10 @@ from activation_functions import sigmoid_vector, relu_vector, tanh_vector, softm
 
 activation = sigmoid_vector
 
-def forward_propagation(input, Weights, Biases, number_of_layers):
+def forward_propagation(X, Weights, Biases, number_of_layers):
     A = []
-    H = [input]
-    for i in range(number_of_layers-1):
+    H = [(X)]
+    for i in range(number_of_layers-2):
         A.append(pre_activation(Weights[i],H[i],Biases[i]))
         H.append(activation(A[i]))
 
