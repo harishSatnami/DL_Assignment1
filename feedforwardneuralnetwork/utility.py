@@ -35,3 +35,18 @@ def get_accuracy(Y_actual, Y_predicted):
             cnt = cnt + 1
 
     return (cnt/total)*100
+
+
+def get_average_delta_WandB(delta_W_acc, delta_B_acc):
+    for i in range(1,len(delta_W_acc)):
+        for j in range(len(delta_W_acc[0])):
+            delta_W_acc[0][j] = np.add(delta_W_acc[0][j] , delta_W_acc[i][j])
+            if i==len(delta_W_acc)-1:
+                delta_W_acc[0][j] = delta_W_acc[0][j] / len(delta_W_acc)
+
+        for j in range(len(delta_B_acc[0])):
+            delta_B_acc[0][j] = np.add(delta_B_acc[0][j] , delta_B_acc[i][j])
+            if i==len(delta_B_acc)-1:
+                delta_B_acc[0][j] = delta_B_acc[0][j] / len(delta_B_acc)
+
+    return delta_W_acc[0], delta_B_acc[0]
