@@ -18,3 +18,13 @@ def random_initialize(number_of_layers, nodes_per_hidden_layer, nodes_in_output_
     W_list = list(W).append(WL)
     B_list = list(B).append(BL)
     return W_list, B_list
+
+
+def get_accuracy(Y_actual, Y_predicted):
+    total = len(Y_actual)
+    cnt = 0
+    for i in range(total):
+        if np.argmax(Y_actual[i]) == np.argmax(Y_predicted[i]):
+            cnt = cnt + 1
+
+    return (cnt/total)*100
