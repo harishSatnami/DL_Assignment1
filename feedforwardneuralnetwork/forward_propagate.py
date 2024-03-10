@@ -7,7 +7,7 @@ activation = sigmoid_vector
 
 def forward_propagation(X, Weights, Biases, number_of_layers):
     A = []
-    H = [(X)]
+    H = [X]
     for i in range(number_of_layers-2):
         A.append(pre_activation(Weights[i],H[i],Biases[i]))
         H.append(activation(A[i]))
