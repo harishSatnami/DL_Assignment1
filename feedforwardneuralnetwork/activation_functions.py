@@ -1,5 +1,6 @@
 # Activation functions
 import math
+import numpy as np
 # 1 Relu
 def relu(a):
     if a < 0 :
@@ -13,21 +14,23 @@ def relu_vector(a):
 
 # 2 Sigmoid
 def sigmoid(a):
-    ans = 1/(1+math.exp(-a))
+    ans = 1/(1+np.exp(-a))
     return ans
 
 def sigmoid_vector(a):
     for i in range(len(a)):
         a[i] = sigmoid(a[i])
+    return a
 
 # 3 Tanh
 def tanh(a):
-    ans = (math.exp(a)-math.exp(-a))/(math.exp(a)+math.exp(-a))
+    ans = (np.exp(a)-np.exp(-a))/(np.exp(a)+np.exp(-a))
     return ans
 
 def tanh_vector(a):
     for i in range(len(a)):
         a[i] = tanh(a[i])
+    return a
 
 # Output Activation Function
 
@@ -35,7 +38,7 @@ def tanh_vector(a):
 def softmax(a):
     summ = 0
     for i in a:
-        summ+=math.exp(i)
+        summ+=np.exp(i)
     for i in range(len(a)):
-        a[i] = math.exp(a[i])/summ
+        a[i] = np.exp(a[i])/summ
     return a
