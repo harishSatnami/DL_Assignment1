@@ -17,10 +17,15 @@ def sigmoid(a):
     ans = 1/(1+np.exp(-a))
     return ans
 
-def sigmoid_vector(a):
+def sigmoid_vector_old(a):
     for i in range(len(a)):
         a[i] = sigmoid(a[i])
     return a
+
+def sigmoid_vector(a):
+    a = np.clip(a, -200,200)
+    ans = 1/(1+np.exp(-a))
+    return ans
 
 # 3 Tanh
 def tanh(a):
@@ -36,9 +41,10 @@ def tanh_vector(a):
 
 # Softmax
 def softmax(a):
-    summ = 0
-    for i in a:
-        summ+=np.exp(i)
-    for i in range(len(a)):
-        a[i] = np.exp(a[i])/summ
-    return a
+    a = np.clip(a, -200, 200)
+    # summ = 0
+    # for i in a:
+    #     summ+=np.exp(i)
+    # for i in range(len(a)):
+    #     a[i] = np.exp(a[i])/summ
+    return np.exp(a)/np.sum(np.exp(a))
