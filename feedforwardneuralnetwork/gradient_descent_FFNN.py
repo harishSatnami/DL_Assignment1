@@ -20,7 +20,7 @@ def gradient_descent(X, Y, learning_rate, number_of_layers, number_of_batch, bat
     # Weights, Biases = random_initialize(number_of_layers,nodes_per_hidden_layer,nodes_in_output_layer)
     itr = 0
 
-    while itr<number_of_batch:
+    while itr<X.shape[0]:
         # H, A, y_pred = forward_propagation(X[itr*batch_size:(itr+1)*batch_size], Weights, Biases, number_of_layers)
         H, A, y_pred = forward_propagation(X[itr], Weights, Biases, number_of_layers)
         # return None, None
@@ -31,12 +31,12 @@ def gradient_descent(X, Y, learning_rate, number_of_layers, number_of_batch, bat
     return Weights, Biases
 
 
-def gradient_descent_mini_batch(X, Y, learning_rate, number_of_layers, number_of_batchs, batch_size, size_of_hidden_layer, Weights, Biases):
+def gradient_descent_mini_batch(X, Y, learning_rate, number_of_layers, number_of_batchs, batch_size, size_of_hidden_layer, nodes_in_output_layer, Weights, Biases):
     itr = 0
     delta_W_acc = []
     delta_B_acc = []
 
-    while iitr<X.shape[0]:
+    while itr<X.shape[0]:
         H, A, y_pred = forward_propagation(X[itr], Weights, Biases, number_of_layers)
 
         delta_Weights, delta_Biases = backward_propagation(H, A, Weights, Y[itr], y_pred, number_of_layers)
