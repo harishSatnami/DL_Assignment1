@@ -17,8 +17,8 @@ def random_initialize(number_of_layers, nodes_per_hidden_layer, nodes_in_output_
         return Weights, Biases
 
     WS = np.random.rand(nodes_per_hidden_layer, input_layer_size)
-    W = np.random.rand(number_of_layers-2, nodes_per_hidden_layer ,nodes_per_hidden_layer)
-    B = np.random.rand(number_of_layers-1, nodes_per_hidden_layer)
+    W = np.random.rand(number_of_layers-3, nodes_per_hidden_layer ,nodes_per_hidden_layer)
+    B = np.random.rand(number_of_layers-2, nodes_per_hidden_layer)
     WL = np.random.rand(nodes_in_output_layer, nodes_per_hidden_layer)
     BL = np.random.rand(nodes_in_output_layer)
 
