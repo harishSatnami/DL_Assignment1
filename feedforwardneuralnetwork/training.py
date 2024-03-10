@@ -14,6 +14,7 @@ def train_model(X, Y, epochs=1, num_of_hidden_layers=1, size_of_layers=4, learni
     Weights, Biases = weight_init_type(num_of_hidden_layers+2,size_of_layers,Y.shape[1], X.shape[1])
 
     for epoch in range(epochs):
+        print("Epoch number", epoch+1, " started")
         Weights, Biases = gradient_descent(X,Y,learning_rate,num_of_hidden_layers+2,num_of_batchs,batch_size,size_of_layers,Y.shape[1],Weights,Biases)
-
+        print("Epoch ",epoch, " finished.")
     return Weights, Biases
