@@ -4,8 +4,13 @@ from backward_propagate import backward_propagation
 
 def update_weights_and_biases(learning_rate, Weights, Biases, delta_Weights, delta_Biases):
     for i in range(len(Weights)):
-        Weights[i] = Weights[i] - learning_rate * delta_Weights[i]
-        Biases[i] = Biases[i] - learning_rate * delta_Biases[i]
+        # Weights[i] = Weights[i] - learning_rate * delta_Weights[i]
+        # Biases[i] = Biases[i] - learning_rate * delta_Biases[i]
+        for j in range(len(Weights[i])):
+            Weights[i][j] = Weights[i][j] - learning_rate * delta_Weights[i][j]
+
+        for j in range(len(Biases)):
+            Biases[i][j] = Biases[i][j] - learning_rate * delta_Biases[i][j]
 
     return Weights, Biases
 
@@ -14,8 +19,7 @@ def update_weights_and_biases(learning_rate, Weights, Biases, delta_Weights, del
 def gradient_descent(X, Y, learning_rate, number_of_layers, number_of_batch, batch_size, nodes_per_hidden_layer, nodes_in_output_layer, Weights, Biases):
     # Weights, Biases = random_initialize(number_of_layers,nodes_per_hidden_layer,nodes_in_output_layer)
     itr = 0
-    # if X is None:
-    #     return None, None
+
     while itr<number_of_batch:
         # H, A, y_pred = forward_propagation(X[itr*batch_size:(itr+1)*batch_size], Weights, Biases, number_of_layers)
         H, A, y_pred = forward_propagation(X[itr], Weights, Biases, number_of_layers)
