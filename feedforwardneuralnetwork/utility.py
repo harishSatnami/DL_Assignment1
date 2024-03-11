@@ -26,6 +26,11 @@ def random_initialize(number_of_layers, nodes_per_hidden_layer, nodes_in_output_
     Biases = [i for i in B] + [BL]
     return Weights, Biases
 
+def xavier_initialize(number_of_layers, nodes_per_hidden_layer, nodes_in_output_layer, input_layer_size=784):
+    pass
+
+
+
 
 def get_accuracy(Y_actual, Y_predicted):
     total = len(Y_actual)
