@@ -8,9 +8,10 @@ def relu(a):
     return a
 
 def relu_vector(a):
+    temp = []
     for i in range(len(a)):
-        a[i] = relu(a[i])
-    return a
+        temp.append(relu(a[i]))
+    return temp
 
 # 2 Sigmoid
 def sigmoid(a):
@@ -18,9 +19,10 @@ def sigmoid(a):
     return ans
 
 def sigmoid_vector_old(a):
+    temp=[]
     for i in range(len(a)):
-        a[i] = sigmoid(a[i])
-    return a
+        temp.append(sigmoid(a[i]))
+    return temp
 
 def sigmoid_vector(a):
     a = np.clip(a, -200,200)
@@ -29,22 +31,24 @@ def sigmoid_vector(a):
 
 # 3 Tanh
 def tanh(a):
+    a = np.clip(a, -200, 200)
     ans = (np.exp(a)-np.exp(-a))/(np.exp(a)+np.exp(-a))
     return ans
 
-def tanh_vector(a):
+def tanh_vector_old(a):
+    temp = []
     for i in range(len(a)):
-        a[i] = tanh(a[i])
-    return a
+        temp.append(tanh(a[i]))
+    return temp
+
+def tanh_vector(a):
+    a = np.clip(a, -200, 200)
+    ans = (np.exp(a)-np.exp(-a))/(np.exp(a)+np.exp(-a))
+    return ans
 
 # Output Activation Function
 
 # Softmax
 def softmax(a):
     a = np.clip(a, -200, 200)
-    # summ = 0
-    # for i in a:
-    #     summ+=np.exp(i)
-    # for i in range(len(a)):
-    #     a[i] = np.exp(a[i])/summ
     return np.exp(a)/np.sum(np.exp(a))
