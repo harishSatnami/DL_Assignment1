@@ -7,4 +7,7 @@ def derivative_tanh(a):
     return 1 - (tanh(a)**2)
 
 def derivative_relu(a):
-    pass
+    if a<=0:
+        return 0
+    return 1
+
