@@ -3,9 +3,16 @@
 from pre_activation_functions import pre_activation
 from activation_functions import sigmoid_vector, relu_vector, tanh_vector, softmax
 
-activation = sigmoid_vector
 
-def forward_propagation(X, Weights, Biases, number_of_layers):
+def forward_propagation(X, Weights, Biases, number_of_layers, activation_function):
+    
+    if activation_function=="relu":
+        activation = relu_vector
+    elif activation_function=="tanh":
+        activation = tanh_vector
+    else:
+        activation = sigmoid_vector
+    
     A = []
     H = [X]
     for i in range(number_of_layers-2):

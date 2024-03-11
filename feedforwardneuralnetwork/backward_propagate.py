@@ -1,14 +1,18 @@
 import numpy as np
 from utility import hadamard_product
-from derivatives import derivative_sigmoid, derivative_relu,derivative_tanh
-
-derivative = derivative_sigmoid
-
+from derivatives import derivative_sigmoid, derivative_relu, derivative_tanh
 
 
 # Backward Propagation
 
-def backward_propagation(H, A, W, y_actual, y_pred, number_of_layers):
+def backward_propagation(H, A, W, y_actual, y_pred, number_of_layers, activation_function):
+    
+    if activation_function=="relu":
+        derivative = derivative_relu
+    elif activation_function=="tanh":
+        derivative = derivative_tanh
+    else:
+        derivative = derivative_sigmoid
     # delta_A = [0 for i in range(number_of_layers-1)]
     delta_W = [0 for i in range(number_of_layers-1)]
     delta_B = [0 for i in range(number_of_layers-1)]
