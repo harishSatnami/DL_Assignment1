@@ -12,6 +12,21 @@ from gradient_descent_FFNN import gradient_descent_stochastic , gradient_descent
 
 
 def train_model(X, Y, epochs=1, num_of_hidden_layers=1, size_of_layers=4, learning_rate=0.1, optimizer="sgd", batch_size=4, l2_regularization_constant=0.001, weight_init_type="random", activation_function="sigmoid", beta=0, epsilon=1e-10):
+    
+    print("number of training datapoints:",X.shape[0])
+    print("number of epochs:", epochs)
+    print("number of hidden layers:", num_of_hidden_layers)
+    print("size of hidden layers:", size_of_layers)
+    print("learning rate:", learning_rate)
+    print("optimizer:", optimizer)
+    print("batch_size:", batch_size)
+    print("l2 regularization constant:", l2_regularization_constant)
+    print("weights and biases initialization type:", weight_init_type)
+    print("activation function:", activation_function)
+    print("beta:", beta)
+    print("epsilon:", epsilon)
+
+
 
     if weight_init_type=="random":
         initialize = random_initialize
