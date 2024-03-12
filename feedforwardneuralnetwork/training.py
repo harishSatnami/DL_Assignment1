@@ -48,6 +48,6 @@ def train_model(X, Y, epochs=1, num_of_hidden_layers=1, size_of_layers=4, learni
 
     for epoch in range(epochs):
         print("Epoch number", epoch+1, " started")
-        Weights, Biases = gradient(X, Y, learning_rate, num_of_hidden_layers+2, batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta=0, epsilon=0)
+        Weights, Biases = gradient(X, Y, learning_rate, num_of_hidden_layers+2, batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta, epsilon)
         print("Epoch ",epoch+1, " finished.")
     return Weights, Biases

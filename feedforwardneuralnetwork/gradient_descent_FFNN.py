@@ -66,10 +66,11 @@ def gradient_descent_mini_batch(X, Y, learning_rate, number_of_layers,  batch_si
     return Weights, Biases
 
 def accumulate_history(prev, current, prev_factor=1, current_factor=1):
+    temp = []
     for i in range(len(prev)):
-        prev[i] = np.add(prev[i]*prev_factor, current[i]*current_factor)
+        temp.append(np.add(prev[i]*prev_factor, current[i]*current_factor))
 
-    return prev
+    return temp
 
 def gradient_descent_momentum_based(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta, epsilon=0):
     
@@ -98,7 +99,7 @@ def gradient_descent_momentum_based(X, Y, learning_rate, number_of_layers,  batc
 def square_each_term(a):
     temp = []
     for i in range(len(a)):
-        temp.append(np.multiply(a[i],a[i]))
+        temp.append(np.array(a[i])**2)
     return temp
 
 def modify_deltas_RMSProp(v_t, w_t, epsilon):
