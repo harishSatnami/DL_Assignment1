@@ -73,8 +73,8 @@ def accumulate_history(prev, current, prev_factor=1, current_factor=1):
 def gradient_descent_momentum_based(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta, epsilon=0):
     
     itr = 0
-    u_t_weights = np.zeros_like(Weights)
-    u_t_biases = np.zeros_like(Biases)
+    u_t_weights = [np.zeros_like(weight) for weight in Weights]
+    u_t_biases = [np.zeros_like(bias) for bias in Biases]
     # u_t_list = [u_t]
     while itr<X.shape[0]:
         H, A, y_pred = forward_propagation(X[itr], Weights, Biases, number_of_layers, activation_function)
@@ -109,8 +109,8 @@ def modify_deltas_RMSProp(v_t, w_t, epsilon):
 def gradient_descent_RMSProp(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta, epsilon):
     
     itr = 0
-    v_t_weights = np.zeros_like(Weights)
-    v_t_biases = np.zeros_like(Biases)
+    v_t_weights = [np.zeros_like(weight) for weight in Weights]
+    v_t_biases = [np.zeros_like(bias) for bias in Biases]
 
     while itr<X.shape[0]:
         H, A, y_pred = forward_propagation(X[itr], Weights, Biases, number_of_layers, activation_function)
@@ -140,8 +140,8 @@ def modify_W_B_NAGD(u_t, w_t, beta):
 
 def gradient_descent_nesterov_accelarated(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta, epsilon=0):
     itr = 0
-    u_t_weights = np.zeros_like(Weights)
-    u_t_biases = np.zeros_like(Biases)
+    u_t_weights = [np.zeros_like(weight) for weight in Weights]
+    u_t_biases = [np.zeros_like(bias) for bias in Biases]
     # u_t_list = [u_t]
     while itr<X.shape[0]:
         H, A, y_pred = forward_propagation(X[itr], modify_W_B_NAGD(u_t_weights, Weights, beta), modify_W_B_NAGD(u_t_biases, Biases, beta), number_of_layers, activation_function)
