@@ -27,7 +27,29 @@ def random_initialize(number_of_layers, nodes_per_hidden_layer, nodes_in_output_
     return Weights, Biases
 
 def xavier_initialize(number_of_layers, nodes_per_hidden_layer, nodes_in_output_layer, input_layer_size=784):
-    pass
+    if number_of_layers<=2:
+        return [np.random.randn(nodes_in_output_layer,input_layer_size)], [np.random.randn(nodes_in_output_layer)]
+
+    fact_in = np.sqrt(6/(input_layer_size + nodes_per_hidden_layer))
+    fact_out = np.sqrt(6/(nodes_in_output_layer + nodes_per_hidden_layer))
+    fact_hid = np.sqrt(6/(nodes_per_hidden_layer + nodes_per_hidden_layer))
+
+    if number_of_layers==3:
+        # fact_in = np.sqrt(6/(input_layer_size + nodes_per_hidden_layer))
+        # fact_out = np.sqrt(6/(nodes_in_output_layer + nodes_per_hidden_layer))
+        Weights = [np.random.uniform(-fact_in, fact_in, (nodes_per_hidden_layer, input_layer_size)), np.random.uniform(-fact_out,fact_out,(nodes_in_output_layer, nodes_per_hidden_layer))]
+        Biases = [np.zeros(nodes_per_hidden_layer), np.zeros(nodes_in_output_layer)]
+        return Weights, Biases
+
+    WS = np.random.uniform(-fact_in, fact_in, (nodes_per_hidden_layer, input_layer_size))
+    W = np.random.uniform(-fact_hid, fact_hid, (number_of_layers-3, nodes_per_hidden_layer ,nodes_per_hidden_layer))
+    B = np.zeros([number_of_layers-2, nodes_per_hidden_layer])
+    WL = np.random.uniform(-fact_out,fact_out,(nodes_in_output_layer, nodes_per_hidden_layer))
+    BL = np.zeros(nodes_in_output_layer)
+
+    Weights = [WS] + [i for i in W] + [WL]
+    Biases = [i for i in B] + [BL]
+    return Weights, Biases
 
 
 

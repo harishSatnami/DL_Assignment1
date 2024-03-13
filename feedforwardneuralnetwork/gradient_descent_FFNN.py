@@ -13,7 +13,7 @@ def update_weights_and_biases(learning_rate, Weights, Biases, delta_Weights, del
             Weights[i][j] = Weights[i][j] - learning_rate * delta_Weights[i][j] - (learning_rate * l2_regularization_constant * Weights[i][j])
 
         for j in range(len(Biases[i])):
-            Biases[i][j] = Biases[i][j] - learning_rate * delta_Biases[i][j] - (learning_rate * l2_regularization_constant * Biases[i][j])
+            Biases[i][j] = Biases[i][j] - learning_rate * delta_Biases[i][j] #- (learning_rate * l2_regularization_constant * Biases[i][j])
 
     return Weights, Biases
 
