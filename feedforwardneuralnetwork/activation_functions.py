@@ -1,28 +1,19 @@
 # Activation functions
-import math
 import numpy as np
+
 # 1 Relu
 def relu(a):
-    if a < 0 :
-        return 0
-    return a
+    return np.max(a,0)
+
 
 def relu_vector(a):
-    temp = []
-    for i in range(len(a)):
-        temp.append(relu(a[i]))
-    return temp
+    return np.maximum(a,0)
+
 
 # 2 Sigmoid
 def sigmoid(a):
     ans = 1/(1+np.exp(-a))
     return ans
-
-def sigmoid_vector_old(a):
-    temp=[]
-    for i in range(len(a)):
-        temp.append(sigmoid(a[i]))
-    return temp
 
 def sigmoid_vector(a):
     a = np.clip(a, -200,200)
@@ -35,16 +26,13 @@ def tanh(a):
     ans = (np.exp(a)-np.exp(-a))/(np.exp(a)+np.exp(-a))
     return ans
 
-def tanh_vector_old(a):
-    temp = []
-    for i in range(len(a)):
-        temp.append(tanh(a[i]))
-    return temp
-
 def tanh_vector(a):
-    a = np.clip(a, -200, 200)
-    ans = (np.exp(a)-np.exp(-a))/(np.exp(a)+np.exp(-a))
-    return ans
+    return np.tanh(a)
+
+# 4 Identity
+def identity(a):
+    return a
+
 
 # Output Activation Function
 
