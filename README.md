@@ -19,21 +19,21 @@ This project requires following
 In this project following datasets are used (we are importing it from keras, Below links are just to check about the datasets)
 
 - fashion_mnist https://www.tensorflow.org/datasets/catalog/fashion_mnist
-    Total number of datapoints = 70000
-    Total number of training datapoints = 60000
-    Total number of testing datapoints = 10000
-    Shape of each datapoint = 28 * 28
-    Number of output classes = 10
-    Labels of output classes = ["T-shirt/top", "Trouser", "Pullover", "Dress", "Coat", "Sandal", "Shirt", "Sneaker", "Bag", "Ankle boot"]
+    * Total number of datapoints = 70000
+    * Total number of training datapoints = 60000
+    * Total number of testing datapoints = 10000
+    * Shape of each datapoint = 28 * 28
+    * Number of output classes = 10
+    * Labels of output classes = ["T-shirt/top", "Trouser", "Pullover", "Dress", "Coat", "Sandal", "Shirt", "Sneaker", "Bag", "Ankle boot"]
 
 
 - mnist https://www.tensorflow.org/datasets/catalog/mnist
-    Total number of datapoints = 70000
-    Total number of training datapoints = 60000
-    Total number of testing datapoints = 10000
-    Shape of each datapoint = 28 * 28
-    Number of output classes = 10
-    Labels of output classes = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    * Total number of datapoints = 70000
+    * Total number of training datapoints = 60000
+    * Total number of testing datapoints = 10000
+    * Shape of each datapoint = 28 * 28
+    * Number of output classes = 10
+    * Labels of output classes = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
 
 
 ## Understanding packages used
