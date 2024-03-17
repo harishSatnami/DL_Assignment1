@@ -6,7 +6,7 @@ from testing import validate
 from gradient_descent_FFNN import gradient_descent_mini_batch, gradient_descent_momentum_based, gradient_descent_RMSProp, gradient_descent_nesterov_accelarated, gradient_descent_adam, gradient_descent_nadam
 
 
-def train_model(X, Y,validatex,validatey, epochs=1, num_of_hidden_layers=1, size_of_layers=4, learning_rate=0.1, optimizer="sgd", batch_size=4, l2_regularization_constant=0.001, weight_init_type="random", activation_function="sigmoid", beta = 0,beta1=0, epsilon=1e-10, beta2=0, loss_type="cross_entropy", momentum=0.9, ):
+def train_model(X, Y,validatex,validatey, epochs=1, num_of_hidden_layers=1, size_of_layers=4, learning_rate=0.1, optimizer="sgd", batch_size=4, l2_regularization_constant=0.001, weight_init_type="random", activation_function="sigmoid", beta = 0,beta1=0, epsilon=1e-10, beta2=0, loss_type="cross_entropy", momentum=0.9, **params):
     run_name = "{}_lr{}_bs{}_hl{}_hlsize{}_{}_{}_epochs{}_{}".format(optimizer, learning_rate, batch_size, num_of_hidden_layers, size_of_layers, activation_function,weight_init_type, epochs,loss_type)
     wandb.run.name=run_name
 
@@ -34,11 +34,11 @@ def train_model(X, Y,validatex,validatey, epochs=1, num_of_hidden_layers=1, size
 
     if optimizer=="mini_batch" or optimizer=="sgd":
         gradient = gradient_descent_mini_batch
-    elif optimizer=="mbgd":
+    elif optimizer=="mbgd" or optimizer=="momentum":
         gradient = gradient_descent_momentum_based
     elif optimizer=="rmsprop":
         gradient = gradient_descent_RMSProp
-    elif optimizer=="nagd":
+    elif optimizer=="nagd" or optimizer=="nag":
         gradient = gradient_descent_nesterov_accelarated
     elif optimizer=="adam":
         gradient = gradient_descent_adam

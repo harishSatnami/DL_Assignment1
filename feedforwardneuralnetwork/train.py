@@ -36,7 +36,7 @@ def run_model():
     parser.add_argument("-w_i","--weight_init",default="xavier",type=str, choices= ['random', 'Xavier'])
     parser.add_argument("-nhl","--num_layers",default=3,type=int, help="Number of hidden layers used in feedforward neural network.")
     parser.add_argument("-sz","--hidden_size",default=128, type=int,help="Number of hidden neurons in a feedforward layer.")
-    parser.add_argument("-a","--activation",default="relu",type=str, choices= ['identity', 'sigmoid', 'tanh', 'ReLU'])
+    parser.add_argument("-a","--activation",default="tanh",type=str, choices= ['identity', 'sigmoid', 'tanh', 'ReLU'])
     parser.add_argument("-rs","--run_sweep",default="False",type=str, choices= ['True', 'False', 'Yes', 'No'], help="Parameter to check whether to run sweep or not")
     parser.add_argument("-swc","--sweep_count",default=20,type=int, help="Number of runs for the sweep")
     
@@ -69,6 +69,7 @@ def run_model():
         # not fully tested 
         pass
         # run_wandb_sweep(project=project, entity=entity, sweep_count=sweep_count)
+        # return
     
     wandb.init(project=project, entity=entity)
     

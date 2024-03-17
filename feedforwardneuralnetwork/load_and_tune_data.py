@@ -9,7 +9,7 @@ def load_and_tune_dataset(dataset):
         data_to_load = fashion_mnist
 
     (trainX, trainY), (testX, testY) = data_to_load.load_data()
-    train_size = trainX.shape[0] *0.9
+    train_size = int(trainX.shape[0] *0.9)
     validateX = trainX[train_size:]
     validateY = trainY[train_size:]
     trainX = trainX[:train_size]

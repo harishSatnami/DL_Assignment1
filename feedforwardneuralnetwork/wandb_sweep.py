@@ -51,7 +51,7 @@ sweep_config = {
 }
 
 (trainX, trainY), (testX, testY) = fashion_mnist.load_data()
-train_size = trainX.shape[0] *0.9
+train_size = int(trainX.shape[0] *0.9)
 validateX = trainX[train_size:]
 validateY = trainY[train_size:]
 trainX = trainX[:train_size]

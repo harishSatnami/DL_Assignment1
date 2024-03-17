@@ -18,7 +18,7 @@ def update_weights_and_biases(learning_rate, Weights, Biases, delta_Weights, del
     return Weights, Biases
 
 
-def gradient_descent_mini_batch(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, momentum=0, beta=0, beta1=0, beta2=0, epsilon=0, loss_type="cross_entropy"):
+def gradient_descent_mini_batch(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, momentum=0, beta=0, beta1=0, beta2=0, epsilon=0, loss_type="cross_entropy", **params):
     itr = 0
     
     for itr in tqdm(range(X.shape[0]//batch_size)):
@@ -40,7 +40,7 @@ def accumulate_history(prev, current, prev_factor=1, current_factor=1):
     return temp
 
 
-def gradient_descent_momentum_based(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, momentum, beta=0, beta1=0, beta2=0, epsilon=0, loss_type="cross_entropy"):
+def gradient_descent_momentum_based(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, momentum, beta=0, beta1=0, beta2=0, epsilon=0, loss_type="cross_entropy", **params):
 
     itr = 0
     u_t_weights = [np.zeros_like(weight) for weight in Weights]
@@ -69,7 +69,7 @@ def modify_deltas_RMSProp(v_t, w_t, epsilon):
     return temp
 
 
-def gradient_descent_RMSProp(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta, momentum=0, beta1=0, beta2=0, epsilon=0, loss_type="cross_entropy"):
+def gradient_descent_RMSProp(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta, momentum=0, beta1=0, beta2=0, epsilon=0, loss_type="cross_entropy", **params):
 
     itr = 0
     v_t_weights = [np.zeros_like(weight) for weight in Weights]
@@ -95,7 +95,7 @@ def modify_W_B_NAGD(u_t, w_t, beta):
     return temp
 
 
-def gradient_descent_nesterov_accelarated(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, momentum, beta=0, beta1=0, beta2=0, epsilon=0, loss_type="cross_entropy"):
+def gradient_descent_nesterov_accelarated(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, momentum, beta=0, beta1=0, beta2=0, epsilon=0, loss_type="cross_entropy", **params):
     itr = 0
     g_t_weights = [np.zeros_like(weight) for weight in Weights]
     g_t_biases = [np.zeros_like(bias) for bias in Biases]
@@ -135,7 +135,7 @@ def modify_deltas_adam(m_theta_hat, v_theta_hat, epsilon):
     return temp
 
 
-def gradient_descent_adam(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta1, beta2, epsilon, momentum=0, beta=0, loss_type="cross_entropy"):
+def gradient_descent_adam(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta1, beta2, epsilon, momentum=0, beta=0, loss_type="cross_entropy", **params):
 
     itr = 0
     v_t_weights = [np.zeros_like(weight) for weight in Weights]
@@ -180,7 +180,7 @@ def modify_deltas_nadam(m_theta_hat, v_theta_hat, delta_theta, beta1, epsilon, i
     return temp
 
 
-def gradient_descent_nadam(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta1, beta2, epsilon, momentum=0, beta=0, loss_type="cross_entropy"):
+def gradient_descent_nadam(X, Y, learning_rate, number_of_layers,  batch_size, Weights, Biases, activation_function, l2_regularization_constant, beta1, beta2, epsilon, momentum=0, beta=0, loss_type="cross_entropy", **params):
 
     itr = 0
     v_t_weights = [np.zeros_like(weight) for weight in Weights]
